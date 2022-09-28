@@ -16,19 +16,21 @@ class MyApp extends StatelessWidget {
             child: Text("Expense Tracker"),
           ),
         ),
-        body: Column(
-          children: [
-            Card(
-              color: Colors.blue,
-              child: Container(
-                width: double.infinity,
-                child: const Center(
-                  child: Text("Expense chart"),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Card(
+                color: Colors.blue,
+                child: Container(
+                  width: double.infinity,
+                  child: const Center(
+                    child: Text("Expense chart"),
+                  ),
                 ),
               ),
-            ),
-            UserTransaction(),
-          ],
+              UserTransaction(),
+            ],
+          ),
         ),
       ),
     );
