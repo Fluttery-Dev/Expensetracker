@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class InputTransaction extends StatelessWidget {
-  InputTransaction({super.key});
+class NewTransaction extends StatelessWidget {
+  NewTransaction({super.key});
 
   final titleController = TextEditingController();
   final amountController = TextEditingController();

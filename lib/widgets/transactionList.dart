@@ -1,10 +1,10 @@
-import 'package:expensetracker/Transaction.dart';
+import 'package:expensetracker/models/Transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class transactionInfo extends StatelessWidget {
+class transactionList extends StatelessWidget {
   final transaction;
-  const transactionInfo({super.key, required this.transaction});
+  const transactionList({super.key, required this.transaction});
 
   @override
   Widget build(BuildContext context) {

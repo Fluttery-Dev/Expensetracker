@@ -1,7 +1,7 @@
-import 'package:expensetracker/Transaction.dart';
+import 'package:expensetracker/models/Transaction.dart';
 import 'package:flutter/material.dart';
-import './transactionInfo.dart';
-import './InputTransaction.dart';
+import 'widgets/transactionList.dart';
+import 'widgets/newTransaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -43,10 +43,10 @@ class MyApp extends StatelessWidget {
             Column(children: [
               ...transactions
                   .map(
-                    (transaction) => transactionInfo(transaction: transaction),
+                    (transaction) => transactionList(transaction: transaction),
                   )
                   .toList(),
-              InputTransaction(),
+              NewTransaction(),
             ])
           ],
         ),
