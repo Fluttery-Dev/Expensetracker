@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './transactionList.dart';
+import './TransactionWidget.dart';
 import './newTransaction.dart';
 import '../models/Transaction.dart';
 
@@ -11,7 +11,6 @@ class UserTransaction extends StatefulWidget {
 }
 
 class _UserTransactionState extends State<UserTransaction> {
-  @override
   final List<Transaction> transactions = [
     Transaction(
       id: "T1",
@@ -38,19 +37,20 @@ class _UserTransactionState extends State<UserTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          NewTransaction(
-            newTransactionHandler: _addNewTransaction,
+    return Column(
+      children: [
+        NewTransaction(
+          newTransactionHandler: _addNewTransaction,
+        ),
+        Container(
+          height: 300,
+          child: ListView.builder(
+            itemBuilder: (context, i) => ShowTransaction(
+              transaction: transactions[i],
+            ),
           ),
-          ...transactions
-              .map(
-                (transaction) => transactionList(transaction: transaction),
-              )
-              .toList(),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
