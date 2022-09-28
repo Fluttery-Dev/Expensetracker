@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class NewTransaction extends StatelessWidget {
-  NewTransaction({super.key});
+  final Function newTransactionHandler;
+  NewTransaction({super.key, required this.newTransactionHandler});
 
   final titleController = TextEditingController();
   final amountController = TextEditingController();
@@ -28,10 +29,12 @@ class NewTransaction extends StatelessWidget {
               controller: amountController,
             ),
             TextButton(
-              onPressed: () {
-                print(amountController.text);
-                print(titleController.text);
-              },
+              onPressed: (() {
+                newTransactionHandler(
+                  txTitle: titleController.text,
+                  txAmount: double.parse(amountController.text),
+                );
+              }),
               child: const Text("Submit"),
             ),
           ],

@@ -1,23 +1,10 @@
-import 'package:expensetracker/models/Transaction.dart';
+import './widgets/UserTransaction.dart';
 import 'package:flutter/material.dart';
-import 'widgets/transactionList.dart';
-import 'widgets/newTransaction.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
-
-  List<Transaction> transactions = [
-    Transaction(
-      id: "T1",
-      title: "Purchased Smart Watch",
-      amount: 1000,
-      date: DateTime.now(),
-    ),
-    Transaction(
-        id: "T2", title: "Condenser Mic", amount: 5000, date: DateTime.now()),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +27,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            Column(children: [
-              ...transactions
-                  .map(
-                    (transaction) => transactionList(transaction: transaction),
-                  )
-                  .toList(),
-              NewTransaction(),
-            ])
+            UserTransaction(),
           ],
         ),
       ),
