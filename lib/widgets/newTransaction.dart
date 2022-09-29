@@ -21,6 +21,7 @@ class NewTransaction extends StatelessWidget {
                 labelText: "Title",
               ),
               controller: titleController,
+              onEditingComplete: addTransaction,
             ),
             TextField(
               decoration: InputDecoration(
@@ -28,19 +29,25 @@ class NewTransaction extends StatelessWidget {
               ),
               controller: amountController,
               keyboardType: TextInputType.number,
+              onEditingComplete: addTransaction,
             ),
             TextButton(
-              onPressed: (() {
-                newTransactionHandler(
-                  txTitle: titleController.text,
-                  txAmount: double.parse(amountController.text),
-                );
-              }),
+              onPressed: (addTransaction),
               child: const Text("Submit"),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  addTransaction() {
+    if (double.parse(amountController.text) < 0) {
+      return;
+    }
+    newTransactionHandler(
+      txTitle: titleController.text,
+      txAmount: double.parse(amountController.text),
     );
   }
 }

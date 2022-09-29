@@ -18,7 +18,7 @@ class ShowTransaction extends StatelessWidget {
             ),
             padding: EdgeInsets.all(10),
             child: Text(
-              transaction.amount.toString(),
+              transaction.amount.toStringAsFixed(2),
               style: const TextStyle(
                 color: Colors.purple,
                 fontSize: 22,
