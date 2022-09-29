@@ -48,6 +48,7 @@ class _UserTransactionState extends State<UserTransaction> {
             itemBuilder: (context, i) => ShowTransaction(
               transaction: transactions[i],
             ),
+            itemCount: transactions.length,
           ),
         ),
       ],

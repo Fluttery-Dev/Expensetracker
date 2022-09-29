@@ -27,6 +27,7 @@ class NewTransaction extends StatelessWidget {
                 labelText: "Amount",
               ),
               controller: amountController,
+              keyboardType: TextInputType.number,
             ),
             TextButton(
               onPressed: (() {
