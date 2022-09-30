@@ -44,15 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                builder: (ctx) {
-                  return NewTransaction(
-                      newTransactionHandler: _addNewTransaction);
-                },
-              );
-            },
+            onPressed: () => newTransactionWidget(context),
             icon: Icon(Icons.add),
           )
         ],
@@ -81,6 +73,21 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => newTransactionWidget(context),
+        child: Icon(
+          Icons.add,
+        ),
+      ),
+    );
+  }
+
+  Future<dynamic> newTransactionWidget(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (ctx) {
+        return NewTransaction(newTransactionHandler: _addNewTransaction);
+      },
     );
   }
 }

@@ -90,3 +90,17 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+
+  fonts:
+    - family: OpenSans
+      fonts:
+        - asset: Assets/fonts/OpenSans-Regular.ttf
+        - asset: Assets/fonts/OpenSans-Bold.ttf
+          weight: 700
+    - family: Quicksand
+      fonts:
+        - asset: Assets/fonts/Quicksand-Light.ttf
+        - asset: Assets/fonts/Quicksand-Bold.ttf
+          weight: 700
+        - asset: Assets/fonts/Quicksand-Regular.ttf
