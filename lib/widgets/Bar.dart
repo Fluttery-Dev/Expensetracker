@@ -17,25 +17,34 @@ class Bar extends StatelessWidget {
       margin: EdgeInsets.all(10),
       child: Column(
         children: [
-          FittedBox(child: Text(spentAmount.toStringAsFixed(0))),
           Container(
-            height: 50,
-            width: 10,
-            margin: EdgeInsets.symmetric(vertical: 4),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 1),
-              borderRadius: BorderRadius.circular(10),
-              color: Color.fromARGB(255, 243, 241, 241),
-            ),
-            child: FractionallySizedBox(
-              heightFactor: partSpend,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                ),
+            height: 10,
+            child: FittedBox(
+              child: Text(
+                spentAmount.toStringAsFixed(0),
               ),
             ),
           ),
+          Stack(children: [
+            Container(
+              height: 50,
+              width: 10,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey, width: 1),
+                borderRadius: BorderRadius.circular(10),
+                color: Color.fromARGB(255, 243, 241, 241),
+              ),
+              child: FractionallySizedBox(
+                heightFactor: partSpend,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.purple,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+            ),
+          ]),
           Text(day.toString().substring(0, 1)),
         ],
       ),
