@@ -3,6 +3,7 @@ import 'package:expensetracker/widgets/newTransaction.dart';
 import 'package:flutter/material.dart';
 
 import 'TransactionWidget.dart';
+import 'chart.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({super.key});
@@ -12,16 +13,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> transactions = [
-    Transaction(
-      id: "T1",
-      title: "Purchased Smart Watch",
-      amount: 1000,
-      date: DateTime.now(),
-    ),
-    Transaction(
-        id: "T2", title: "Condenser Mic", amount: 5000, date: DateTime.now()),
-  ];
+  final List<Transaction> transactions = [];
 
   void _addNewTransaction({required String txTitle, required double txAmount}) {
     transactions.add(
@@ -52,23 +44,24 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Card(
-              color: Colors.blue,
-              child: Container(
-                width: double.infinity,
-                child: const Center(
-                  child: Text("Expense chart"),
-                ),
-              ),
+            Chart(
+              recentTransactions: transactions
+                  .where(
+                    (element) => element.date
+                        .isAfter(DateTime.now().subtract(Duration(days: 7))),
+                  )
+                  .toList(),
             ),
             Container(
               height: 300,
-              child: ListView.builder(
-                itemBuilder: (context, i) => ShowTransaction(
-                  transaction: transactions[i],
-                ),
-                itemCount: transactions.length,
-              ),
+              child: transactions.isEmpty
+                  ? Image.asset("assets/images/empty.png")
+                  : ListView.builder(
+                      itemBuilder: (context, i) => ShowTransaction(
+                        transaction: transactions[i],
+                      ),
+                      itemCount: transactions.length,
+                    ),
             ),
           ],
         ),

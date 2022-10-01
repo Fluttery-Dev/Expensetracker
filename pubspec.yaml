@@ -104,3 +104,6 @@ flutter:
         - asset: Assets/fonts/Quicksand-Bold.ttf
           weight: 700
         - asset: Assets/fonts/Quicksand-Regular.ttf
+
+  assets:
+    - assets/images/empty.png
