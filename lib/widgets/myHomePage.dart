@@ -61,8 +61,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ? Image.asset("assets/images/empty.png")
                   : ListView.builder(
                       itemBuilder: (context, i) => ShowTransaction(
-                        transaction: transactions[i],
-                      ),
+                          transaction: transactions[i],
+                          deleteHandler: deleteElement),
                       itemCount: transactions.length,
                     ),
             ),
@@ -85,5 +85,9 @@ class _MyHomePageState extends State<MyHomePage> {
         return NewTransaction(newTransactionHandler: _addNewTransaction);
       },
     );
+  }
+
+  void deleteElement(Transaction element) {
+    transactions.remove(element);
   }
 }
