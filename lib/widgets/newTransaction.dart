@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -31,16 +33,16 @@ class _NewTransactionState extends State<NewTransaction> {
                 labelText: "Title",
               ),
               controller: titleController,
-              onEditingComplete: addTransaction,
+              textInputAction: TextInputAction.next,
             ),
             TextField(
-              decoration: const InputDecoration(
-                labelText: "Amount",
-              ),
-              controller: amountController,
-              keyboardType: TextInputType.number,
-              onEditingComplete: addTransaction,
-            ),
+                decoration: const InputDecoration(
+                  labelText: "Amount",
+                ),
+                controller: amountController,
+                keyboardType: TextInputType.number,
+                textInputAction: TextInputAction.done,
+                onSubmitted: ((value) => _openDate())),
             Container(
               margin: EdgeInsets.symmetric(vertical: 5),
               child: Row(
@@ -51,20 +53,7 @@ class _NewTransactionState extends State<NewTransaction> {
                         : "Chosen Date : ${DateFormat.yMd().format(_chosenDate!)}"),
                   ),
                   TextButton(
-                    onPressed: () => showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2003),
-                      lastDate: DateTime(2025),
-                    ).then(
-                      (value) {
-                        if (value == null) {
-                          return;
-                        }
-                        setState(() {});
-                        _chosenDate = value;
-                      },
-                    ),
+                    onPressed: _openDate,
                     child: const Text(
                       "Pick Date",
                       style: TextStyle(
@@ -96,5 +85,22 @@ class _NewTransactionState extends State<NewTransaction> {
     );
 
     Navigator.of(context).pop();
+  }
+
+  _openDate() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2003),
+      lastDate: DateTime(2025),
+    ).then(
+      (value) {
+        if (value == null) {
+          return;
+        }
+        setState(() {});
+        _chosenDate = value;
+      },
+    );
   }
 }

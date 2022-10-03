@@ -56,13 +56,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   .toList(),
             ),
             Container(
-              height: 300,
+              height: 450,
               child: transactions.isEmpty
                   ? Image.asset("assets/images/empty.png")
                   : ListView.builder(
                       itemBuilder: (context, i) => ShowTransaction(
-                          transaction: transactions[i],
-                          deleteHandler: deleteElement),
+                        transaction: transactions[i],
+                        deleteHandler: deleteElement,
+                      ),
                       itemCount: transactions.length,
                     ),
             ),
@@ -89,5 +90,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void deleteElement(Transaction element) {
     transactions.remove(element);
+    setState(() {});
   }
 }
