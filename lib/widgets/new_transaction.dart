@@ -1,12 +1,10 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function newTransactionHandler;
 
-  NewTransaction({super.key, required this.newTransactionHandler});
+  const NewTransaction({super.key, required this.newTransactionHandler});
 
   @override
   State<NewTransaction> createState() => _NewTransactionState();
@@ -17,7 +15,7 @@ class _NewTransactionState extends State<NewTransaction> {
 
   final amountController = TextEditingController();
 
-  late DateTime? _chosenDate = null;
+  late DateTime? _chosenDate;
 
   @override
   Widget build(BuildContext context) {

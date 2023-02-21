@@ -1,4 +1,4 @@
-import 'package:expensetracker/models/Transaction.dart';
+import 'package:expensetracker/models/transaction_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -23,7 +23,7 @@ class ShowTransaction extends StatelessWidget {
         ),
         title: Text(
           transaction.title,
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         subtitle: Text(
           DateFormat.yMMMd().format(transaction.date),
@@ -35,10 +35,11 @@ class ShowTransaction extends StatelessWidget {
                 label: const Text("Delete"),
                 style: ButtonStyle(
                   foregroundColor: MaterialStateProperty.all<Color>(
-                      Theme.of(context).errorColor),
+                      Theme.of(context).colorScheme.error),
                 ))
             : IconButton(
-                icon: Icon(Icons.delete, color: Theme.of(context).errorColor),
+                icon: Icon(Icons.delete,
+                    color: Theme.of(context).colorScheme.error),
                 onPressed: () => deleteHandler(transaction),
               ),
       ),
