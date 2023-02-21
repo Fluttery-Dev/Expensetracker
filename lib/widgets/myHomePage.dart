@@ -82,8 +82,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<dynamic> newTransactionWidget(BuildContext context) {
     return showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       builder: (ctx) {
-        return NewTransaction(newTransactionHandler: _addNewTransaction);
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            NewTransaction(newTransactionHandler: _addNewTransaction),
+          ],
+        );
       },
     );
   }

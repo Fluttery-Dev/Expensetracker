@@ -28,10 +28,19 @@ class ShowTransaction extends StatelessWidget {
         subtitle: Text(
           DateFormat.yMMMd().format(transaction.date),
         ),
-        trailing: IconButton(
-          icon: Icon(Icons.delete, color: Theme.of(context).errorColor),
-          onPressed: () => deleteHandler(transaction),
-        ),
+        trailing: MediaQuery.of(context).size.width >= 460
+            ? TextButton.icon(
+                onPressed: () => deleteHandler(transaction),
+                icon: Icon(Icons.delete),
+                label: Text("Delete"),
+                style: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.all<Color>(
+                      Theme.of(context).errorColor),
+                ))
+            : IconButton(
+                icon: Icon(Icons.delete, color: Theme.of(context).errorColor),
+                onPressed: () => deleteHandler(transaction),
+              ),
       ),
     );
   }
