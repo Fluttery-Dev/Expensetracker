@@ -48,7 +48,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 textInputAction: TextInputAction.done,
                 onSubmitted: ((value) => _openDate())),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 5),
+              margin: const EdgeInsets.symmetric(vertical: 5),
               child: Row(
                 children: [
                   Expanded(

@@ -17,7 +17,7 @@ class ShowTransaction extends StatelessWidget {
         leading: CircleAvatar(
           radius: 30,
           child: Padding(
-              padding: EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
               child: FittedBox(
                   child: Text(transaction.amount.toStringAsFixed(2)))),
         ),
@@ -31,8 +31,8 @@ class ShowTransaction extends StatelessWidget {
         trailing: MediaQuery.of(context).size.width >= 460
             ? TextButton.icon(
                 onPressed: () => deleteHandler(transaction),
-                icon: Icon(Icons.delete),
-                label: Text("Delete"),
+                icon: const Icon(Icons.delete),
+                label: const Text("Delete"),
                 style: ButtonStyle(
                   foregroundColor: MaterialStateProperty.all<Color>(
                       Theme.of(context).errorColor),

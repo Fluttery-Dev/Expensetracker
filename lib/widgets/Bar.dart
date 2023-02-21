@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Bar extends StatelessWidget {
-  final spentAmount;
-  final partSpend;
-  final day;
+  final double spentAmount;
+  final double partSpend;
+  final Object? day;
 
   const Bar(
       {super.key,
@@ -32,7 +32,7 @@ class Bar extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey, width: 1),
                 borderRadius: BorderRadius.circular(10),
-                color: Color.fromARGB(255, 243, 241, 241),
+                color: const Color.fromARGB(255, 243, 241, 241),
               ),
               child: Stack(
                 children: [

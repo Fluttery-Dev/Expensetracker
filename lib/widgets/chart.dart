@@ -52,7 +52,7 @@ class Chart extends StatelessWidget {
                   (data) => Flexible(
                     fit: FlexFit.tight,
                     child: Bar(
-                        day: data["day"],
+                        day: data["day"]!,
                         spentAmount: data["amount"] as double,
                         partSpend: totalSpendings != 0
                             ? (data["amount"] as double) / totalSpendings

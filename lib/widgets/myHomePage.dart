@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [
           IconButton(
             onPressed: () => newTransactionWidget(context),
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
           )
         ],
       ),
@@ -50,8 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Chart(
               recentTransactions: transactions
                   .where(
-                    (element) => element.date
-                        .isAfter(DateTime.now().subtract(Duration(days: 7))),
+                    (element) => element.date.isAfter(
+                        DateTime.now().subtract(const Duration(days: 7))),
                   )
                   .toList(),
             ),
@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => newTransactionWidget(context),
-        child: Icon(
+        child: const Icon(
           Icons.add,
         ),
       ),
